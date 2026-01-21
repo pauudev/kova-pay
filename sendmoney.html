@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kova Pay | Enviar dinero</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+
+  <body class="send-money-page">
+    <!-- Navbar branding -->
+    <nav class="navbar menu-navbar border-bottom">
+      <div class="container-fluid">
+        <!-- Botón sidebar -->
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#sidebarMenu"
+          aria-controls="sidebarMenu"
+        >
+          ☰
+        </button>
+
+        <a class="navbar-brand fw-bold ms-2" href="menu.html">Kova Pay</a>
+      </div>
+    </nav>
+    <aside
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="sidebarMenu"
+      aria-labelledby="sidebarMenuLabel"
+    >
+      <div class="offcanvas-header">
+        <h2 class="offcanvas-title fw-bold" id="sidebarMenuLabel">Kova Pay</h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Cerrar"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body d-flex flex-column h-100">
+        <nav class="nav flex-column gap-2">
+          <a class="nav-link" href="menu.html">Inicio</a>
+          <a class="nav-link" href="deposit.html">Depositar</a>
+          <a class="nav-link fw-semibold" href="sendmoney.html"
+            >Enviar dinero</a
+          >
+          <a class="nav-link" href="transactions.html">Movimientos</a>
+        </nav>
+
+        <div class="mt-auto pt-3 border-top">
+          <a
+            href="login.html"
+            class="nav-link text-danger d-flex align-items-center gap-2"
+          >
+            <span class="fs-5"> ➜] </span>
+            <span>Cerrar sesión</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+    <!-- Main -->
+
+    <main class="container py-4">
+      <div class="container text-center">
+        <section class="mb-4 text-center">
+          <h2 class="fw-bold">Enviar dinero</h2>
+        </section>
+      </div>
+
+      <section class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+          <section class="balance-section">
+            <form>
+              <div class="mb-3">
+                <label for="contacto" class="sendmoney-label">
+                  Buscar contacto
+                </label>
+                <input
+                  type="text"
+                  id="contacto"
+                  class="form-control"
+                  placeholder="Nombre o email"
+                  required
+                />
+              </div>
+
+              <div class="d-grid gap-2">
+                <button type="submit" class="sendmoney-btn">Buscar</button>
+                <button
+                  type="button"
+                  class="sendmoney-btn w-100"
+                  data-bs-toggle="modal"
+                  data-bs-target="#agregarcontactomodal"
+                >
+                  Agregar nuevo contacto
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <!-- Contactos frecuentes -->
+      <section class="mt-5">
+        <h3 class="fs-5 fw-semibold mb-3">Contactos frecuentes</h3>
+
+        <div class="list-group">
+          <!-- Aquí se insertan los contactos mediante JS -->
+        </div>
+        <!-- Botón para enviar dinero -->
+        <button
+          id="btnAbrirModalEnvio"
+          class="btn btn-success mt-3"
+          data-bs-toggle="modal"
+          data-bs-target="#modalEnviarDinero"
+          style="display: none"
+        >
+          Enviar dinero
+        </button>
+      </section>
+    </main>
+
+    <!-- Modal de agregar contacto -->
+    <div class="modal fade" tabindex="-1" id="agregarcontactomodal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-semibold">Agregar nuevo contacto</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+
+          <form id="contactForm">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="contactName" class="form-label">
+                  Nombre y apellido:
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contactName"
+                  placeholder="Ej: Juan Pérez"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="contactNumber" class="form-label">
+                  Número de cuenta:
+                </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="contactNumber"
+                  placeholder="1234567890"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="contactAlias" class="form-label"> Alias: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contactAlias"
+                  placeholder="Alias del contacto"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="contactBank" class="form-label">Banco: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contactBank"
+                  placeholder="Banco del contacto"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="auth-btn" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button type="submit" class="auth-btn">Guardar contacto</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de enviar dinero -->
+    <div
+      class="modal fade"
+      id="modalEnviarDinero"
+      tabindex="-1"
+      aria-labelledby="modalEnviarDineroLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form id="formEnviarDinero">
+            <div class="modal-header">
+              <h5 class="modal-title fw-semibold" id="modalEnviarDineroLabel">
+                Enviar dinero a
+                <span id="nombreContactoEnvio" class="text-primary"></span>
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Cerrar"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="montoEnvio" class="form-label"
+                  >Monto a enviar</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="montoEnvio"
+                  min="100"
+                  required
+                  placeholder="Ej: 15000"
+                />
+              </div>
+              <p class="text-muted small">
+                Saldo actual:
+                <span id="saldoDisponibleEnvio" class="fw-semibold"></span>
+              </p>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="auth-btn" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button type="submit" class="auth-btn">Confirmar envío</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <!-- JS -->
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/sendmoney.js"></script>
+  </body>
+</html>
