@@ -60,6 +60,7 @@ kova-pay/
       ├── deposit.js        # Lógica del formulario de depósito
       ├── sendmoney.js      # Contactos y envío de dinero
       └── transactions.js   # Historial de movimientos y balance
+```
 
 ---
 
@@ -125,6 +126,7 @@ kova-pay/
 ---
 
 ## Persistencia (`localStorage`)
+
 La app utiliza `localStorage` como **backend simulado**, manteniendo datos entre recargas:
 
 - **Saldo** → `kova_balance`
@@ -134,17 +136,16 @@ La app utiliza `localStorage` como **backend simulado**, manteniendo datos entre
 ---
 
 ## Cómo ejecutar
+
 1. Clona o descarga el repositorio.
 2. Abre `login.html` en el navegador.
-3. Abrir con **Live Server** en VS Code.
-Recomendado (para evitar problemas con rutas):
--
+3. (Recomendado) Abrir con **Live Server** en VS Code.
 
 ---
 
 ## Notas
+
 - Para reiniciar el estado y probar flujos desde cero puedes ejecutar en consola:
   - `localStorage.clear()`
 - El proyecto está preparado para escalar a futuro (por ejemplo: autenticación real, backend, reglas de negocio más complejas).
 - La separación en archivos JS mejora la mantención y lectura del código.
-```
